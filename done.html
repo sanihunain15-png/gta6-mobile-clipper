@@ -1,0 +1,7 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Your clips</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><main class="shell"><header><div class="mark">✓</div><div><h1>CLIPS READY</h1><p>{{ count }} MP4 files generated</p></div></header>
+<section class="hero"><h2>Your video clips</h2><p>Tap a file to download it to your phone.</p></section>
+<div class="downloads">{% for clip in clips %}<a href="{{ url_for('download', job=job, filename=clip) }}">⬇ {{ clip }}</a>{% endfor %}</div>
+<a class="back" href="/">← Create another batch</a>
+<p class="fine">For a public deployment, add user authentication, storage limits, automatic file expiry and a job queue before sharing this site.</p>
+</main></body></html>

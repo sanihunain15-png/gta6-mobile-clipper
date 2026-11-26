@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GTA 6 Mobile Clipper</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body><main class="shell">
+<header><div class="mark">▶</div><div><h1>GTA 6 CLIPPER</h1><p>Mobile video clipping studio</p></div></header>
+<section class="hero"><span class="tag">MOBILE READY</span><h2>Turn a video into clips.</h2>
+<p>Upload a video you own or have permission to edit. Choose clip length and format, then generate MP4 files.</p></section>
+{% with messages = get_flashed_messages() %}{% if messages %}<div class="alert">{% for m in messages %}{{m}}{% endfor %}</div>{% endif %}{% endwith %}
+<form action="/create" method="post" enctype="multipart/form-data">
+<label class="field-title" for="video">Choose video file</label>
+<input id="video" name="video" type="file" accept="video/*" required>
+<div class="grid">
+<div><label for="count">Number of clips</label><select id="count" name="count"><option>10</option><option>15</option><option selected>30</option><option>35</option></select></div>
+<div><label for="clip_len">Each clip (seconds)</label><select id="clip_len" name="clip_len"><option>10</option><option selected>20</option><option>30</option><option>45</option><option>60</option></select></div>
+</div>
+<label for="aspect">Video format</label><select id="aspect" name="aspect"><option value="vertical" selected>9:16 Vertical (Reels / Shorts)</option><option value="landscape">16:9 Landscape</option></select>
+<button type="submit">Generate clips</button>
+<p class="fine">This starter version samples clips evenly across the video. It does not yet detect viral moments with AI or fetch YouTube links. Processing requires a server with FFmpeg installed.</p>
+</form>
+<footer>Use only videos you own or are authorized to edit. Respect creator permissions and platform terms.</footer>
+</main></body></html>
